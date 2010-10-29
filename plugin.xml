@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Parallelize Action Set"
+            visible="true"
+            id="ParallelizeTest.actionSet">
+         <menu
+               label="Interactive &amp;Parallelize"
+               id="sampleMenu">
+            <separator
+                  name="sampleGroup">
+            </separator>
+         </menu>
+         <action
+               label="&amp;Parallelize1"
+               icon="icons/logo.gif"
+               class="parallelizetest.actions.Parallelize1Action"
+               tooltip="Parallelize"
+               menubarPath="sampleMenu/sampleGroup"
+               toolbarPath="sampleGroup"
+               id="parallelizetest.actions.ParallelizeAction1">
+         </action>
+         <action
+               class="parallelizetest.actions.Parallelize2Action"
+               icon="icons/logo.gif"
+               id="parallelizetest.actions.ParallelizeAction2"
+               label="&amp;Parallelize2"
+               menubarPath="sampleMenu/sampleGroup"
+               style="push"
+               toolbarPath="sampleGroup"
+               tooltip="Parallelize">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Parallelize Preferences"
+            class="parallelizetest.preferences.ParallelizePreferencePage"
+            id="parallelizetest.preferences.ParallelizePreferencePage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="parallelizetest.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="ParallelizeTest"
+            name="Program Graph">
+      </category>
+      <view
+            category="ParallelizeTest"
+            class="parallelizetest.views.TaskGraphView"
+            icon="icons/sample.gif"
+            id="parallelizetest.views.TaskGraphView"
+            name="Task Graph">
+      </view>
+
+      <view
+            category="ParallelizeTest"
+            class="parallelizetest.views.FlowGraphView"
+            icon="icons/sample.gif"
+            id="parallelizetest.views.FlowGraphView"
+            name="Flow Graph"
+            restorable="true">
+      </view>
+      <view
+            category="ParallelizeTest"
+            class="parallelizetest.views.DependenceGraphView"
+            icon="icons/sample.gif"
+            id="parallelizetest.views.DependenceGraphView"
+            name="Dependence Graph"
+            restorable="true">
+      </view>   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="parallelizetest.views.ParallelizeView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.TaskList">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>
